@@ -27,7 +27,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY --from=build /goapi /app/
 EXPOSE 80
-EXPOSE 8080
+EXPOSE 1234
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
 
 

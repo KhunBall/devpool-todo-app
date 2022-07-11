@@ -13,7 +13,7 @@ services:
       - mynet
     ports:
       - 4200:80
-      - 80:8080
+      - 80:1234
     environment:
       - USER=${USER}
       - PASSWORD=${PASSWORD}
@@ -31,7 +31,6 @@ services:
       - mynet
     ports:
       - 1433:1433
-      - 8080:8080
     volumes:
       - mssql:/var/opt/mssql
     environment:

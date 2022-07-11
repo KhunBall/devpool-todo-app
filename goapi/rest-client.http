@@ -1,5 +1,5 @@
 ### Get All
-http://localhost:1234/users
+http://localhost:5678/users
 ###
 
 http://localhost/users
@@ -13,7 +13,7 @@ http://localhost:123/users/2
 http://localhost:1234/users/email/ball@apple.com
 
 ### Create a new
-POST http://localhost:1234/users
+POST http://localhost:5678/users
 Content-Type: application/json
 
 {

@@ -35,7 +35,7 @@ pipeline {
             steps {
                     sshagent(['prod-credential']) {
                     sh 'scp -o StrictHostKeyChecking=no docker-compose.yml khunball@192.168.1.23:/home/khunball/docker-compose.yml'
-                    sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.1.23 docker-compose up -d'
+                    sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.1.23 docker compose up -d'
                 }
             }
         }

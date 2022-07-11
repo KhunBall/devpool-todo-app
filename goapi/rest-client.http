@@ -1,8 +1,13 @@
 ### Get All
 http://localhost:1234/users
+###
+
+http://localhost/users
 
 ### Get by ID
 http://localhost:1234/users/2
+###
+http://localhost:123/users/2
 
 ### ฺ Gey by Email
 http://localhost:1234/users/email/ball@apple.com

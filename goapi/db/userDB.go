@@ -1,5 +1,7 @@
 package db
 
+import "gorm.io/gorm"
+
 // type UserDB struct {
 // 	gorm.Model
 // 	ID    uint `gorm:"primary_key"`
@@ -9,6 +11,7 @@ package db
 // }
 
 type UserDB struct {
+	gorm.Model
 	ID    uint `gorm:"primary_key"`
 	Name  string
 	Email string
@@ -66,7 +69,7 @@ func Create(user UserDB) error {
 func Update(user UserDB) error {
 	db := DB()
 	userData := UserDB{
-		ID: user.ID,
+		ID:    user.ID,
 		Name:  user.Name,
 		Email: user.Email,
 		Todo:  user.Todo,

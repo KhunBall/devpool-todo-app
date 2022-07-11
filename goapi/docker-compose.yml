@@ -11,6 +11,7 @@ services:
     hostname: go-api
     networks:
       - mynet
+    restart: always
     ports:
       - 4200:80
       - 80:8080

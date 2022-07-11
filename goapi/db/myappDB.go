@@ -23,8 +23,7 @@ func DB() *gorm.DB {
 	// os.Setenv("PORT", "1433")
 	// os.Setenv("DATABASE", "master")
 	
-	dbName_mssql := fmt.Sprintf("sqlserver://%s:%s@%s:%s?database=%s",
-		os.Getenv("USER"),
+	dbName_mssql := fmt.Sprintf("sqlserver://sa:%s@%s:%s?database=%s",
 		os.Getenv("PASSWORD"),
 		os.Getenv("HOST"),
 		os.Getenv("PORT"),

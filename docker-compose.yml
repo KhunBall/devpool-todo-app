@@ -15,7 +15,6 @@ services:
       - 4200:80
       - 80:1234
     environment:
-      - USER=${USER}
       - PASSWORD=${PASSWORD}
       - HOST=${HOST}
       - PORT=${PORT}

@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('1447b088-c586-4638-9056-1ac7a24db4cf')
+	}
+
     stages {
         stage('Clean old container if exist') {
             steps {
@@ -10,11 +15,12 @@ pipeline {
         stage('Clean old image if exist') {
             steps {
                 sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
-                sh 'docker image rm khunball/docker-todo-app:latest'
+                sh 'docker rmi khunball/docker-todo-app:latest'
             }
         }
         stage('Deploy to server') {
             steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker build --tag khunball/docker-todo-app .'
                 sh 'docker push khunball/docker-todo-app'
             }
@@ -22,7 +28,6 @@ pipeline {
         stage('Test run') {
             steps {
                 sh 'docker run --name docker-todo-app -dp 80:80 khunball/docker-todo-app'
-                sh 'docker stop docker-todo-app'
             }
         }       
         stage('Deploy') {

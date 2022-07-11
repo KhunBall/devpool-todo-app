@@ -14,8 +14,9 @@ pipeline {
         }
         stage('Clean old image if exist') {
             steps {
-                sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
-                sh 'docker rmi khunball/docker-todo-app:latest'
+                sh 'docker image prune --filter="dangling=true"'
+                // sh 'docker images -q -f status=exited | xargs --no-run-if-empty docker rmi'
+                // sh 'docker rmi khunball/docker-todo-app:latest'
             }
         }
         stage('Deploy to server') {

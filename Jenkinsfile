@@ -21,11 +21,9 @@ pipeline {
         }
         stage('Deploy to server') {
             steps {
-                sshagent(['prod-credential']) {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     sh 'docker build --tag khunball/docker-todo-app .'
                     sh 'docker push khunball/docker-todo-app'
-                }
             }
         }
         stage('Test run') {
@@ -35,8 +33,10 @@ pipeline {
         }       
         stage('Deploy') {
             steps {
-                sh 'scp -o StrictHostKeyChecking=no docker-compose.yml khunball@192.168.1.23:/home/khunball/docker-compose.yml'
-                sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.1.23 docker-compose up -d'
+                    sshagent(['prod-credential']) {
+                    sh 'scp -o StrictHostKeyChecking=no docker-compose.yml khunball@192.168.1.23:/home/khunball/docker-compose.yml'
+                    sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.1.23 docker-compose up -d'
+                }
             }
         }
         stage('Clean up') {

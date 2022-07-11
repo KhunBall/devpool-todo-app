@@ -21,9 +21,11 @@ pipeline {
         }
         stage('Deploy to server') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker build --tag khunball/docker-todo-app .'
-                sh 'docker push khunball/docker-todo-app'
+                sshagent(['prod-credential']) {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    sh 'docker build --tag khunball/docker-todo-app .'
+                    sh 'docker push khunball/docker-todo-app'
+                }
             }
         }
         stage('Test run') {

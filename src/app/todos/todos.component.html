@@ -1,0 +1,38 @@
+<div align ="right">
+    <button type="button" class="btn btn-danger" routerLink="/login">Logout </button>
+</div>
+
+
+<div class="d-flex justify-content-center my-2 ">
+<h4>Todo List</h4>
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Enter your todo list" id="new-todo" #todolist>
+  <button class="btn btn-primary" type="button" id="button-addon" (click)="add(todolist.value); todolist.value=''">Add todo</button>
+</div>
+
+<ul class="list-grup">
+  <li
+  
+    class="list-group-item list-group-item-action"   
+    *ngFor="let todo of todos">
+
+    <div class="d-flex justify-content-between">
+      <a class="text-decoration-none" routerLink="/todo/{{todo.ID}}">
+        <span class="badge">{{todo.ID}}</span> 
+        {{todo.Todo}}
+      </a>
+      <a class="btn btn-danger btn-sm" 
+        (click)="delete(todo)">
+        <i class="bi bi-trash"></i>
+      </a>
+    </div>
+
+
+  </li>
+</ul>
+
+
+
+
+

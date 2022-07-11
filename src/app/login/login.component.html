@@ -1,0 +1,18 @@
+<!-- <h2>Top Heroes</h2>
+<div class="todos-menu">
+  <a *ngFor="let todo of todos"
+      routerLink="/todo/{{todo.ID}}">
+      {{todo.Todo}}
+  </a>
+</div> -->
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label" #useremail>Email address</label>
+  <!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" #useremail> -->
+  <input type="email" class="form-control" placeholder="name@example.com" id="new-todo" #uemail>
+</div>
+
+<div class="d-flex justify-content-center my-2">
+  <!-- <button type="button" class="btn btn-primary" (click)="login(useremail.value); useremail.value=''">Login</button> -->
+  <button class="btn btn-primary" type="button" id="button-addon" (click)="login(uemail.value); uemail.value=''">Login</button>
+</div>

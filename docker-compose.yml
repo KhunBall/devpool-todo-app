@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  # app:
+  #   image: khunball/todoapp:latest
+  #   ports:
+  #     - 7000:3000
+  #   environment:
+  #     MYSQL_HOST: ${MYSQL_HOST}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #     MYSQL_DB: ${MYSQL_DB}
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2019-CU16-GDR1-ubuntu-20.04
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${PASSWORD}
+    volumes:
+      - todo-mssql-data:/var/opt/mssql
+volumes:
+  todo-mssql-data:

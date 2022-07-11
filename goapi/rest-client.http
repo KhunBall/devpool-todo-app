@@ -1,0 +1,29 @@
+### Get All
+http://localhost:1234/users
+
+### Get by ID
+http://localhost:1234/users/2
+
+### ฺ Gey by Email
+http://localhost:1234/users/email/ball@apple.com
+
+### Create a new
+POST http://localhost:1234/users
+Content-Type: application/json
+
+{
+    "Name": "ball@mail.com",
+    "Email": "ball@mail.com",
+    "Todo": "ล้างจาน"
+}
+
+### Update
+PUT http://localhost:1234/users/1002
+Content-Type: application/json
+
+{
+    "email": "steve.job@apple.com"
+}
+
+### Delete
+DELETE http://localhost:1234/users/1

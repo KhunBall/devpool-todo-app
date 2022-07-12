@@ -35,10 +35,10 @@ pipeline {
         stage('Deploy') {
             steps {
                     sshagent(['prod-credential']) {
-                    // sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.174.172 docker pull khunball/docker-todo-app '
+                    sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.174.172 docker pull khunball/docker-todo-app '
                     sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.174.172 docker compose down'
                     sh 'scp -o StrictHostKeyChecking=no .env khunball@192.168.174.172:/home/khunball/.env'
-                    sh 'scp -o StrictHostKeyChecking=no Dockerfile khunball@192.168.174.172:/home/khunball/Dockerfile'
+                    // sh 'scp -o StrictHostKeyChecking=no Dockerfile khunball@192.168.174.172:/home/khunball/Dockerfile'
                     sh 'scp -o StrictHostKeyChecking=no docker-compose.yml khunball@192.168.174.172:/home/khunball/docker-compose.yml'
                     sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.174.172 docker compose up -d'
                 }

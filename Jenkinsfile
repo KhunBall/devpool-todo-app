@@ -34,6 +34,7 @@ pipeline {
         stage('Deploy') {
             steps {
                     sshagent(['prod-credential']) {
+                    sh 'scp -o StrictHostKeyChecking=no .env khunball@192.168.1.23:/home/khunball/.env'
                     sh 'scp -o StrictHostKeyChecking=no docker-compose.yml khunball@192.168.1.23:/home/khunball/docker-compose.yml'
                     sh 'ssh -o StrictHostKeyChecking=no khunball@192.168.1.23 docker compose up -d'
                 }
@@ -41,7 +42,7 @@ pipeline {
         }
         stage('Clean up') {
             steps {
-                sh 'docker rm -f docker-todo-app'
+                sh 'docker rm -f go-api'
                 sh 'docker image rm khunball/docker-todo-app:latest'
             }
         }

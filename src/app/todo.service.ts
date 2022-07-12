@@ -17,7 +17,10 @@ export class TodoService {
   // private todosUrl = 'http://localhost:5678/users';  // URL to web api
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' 
+    })
   };
 
   constructor(

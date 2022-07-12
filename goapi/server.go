@@ -38,6 +38,7 @@ func main() {
 	e.GET("/users/email/:email", u.GetbyMail)
 	e.GET("/users/:id", u.GetUser)
 	e.POST("/users", u.Save)
+	// dd
 	// e.PUT("/users/:id", u.Update)
 	e.DELETE("/users/:id", u.Delete)
 

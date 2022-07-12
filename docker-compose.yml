@@ -39,6 +39,7 @@ services:
 
 volumes:
   mssql:
+    external: true
 
 networks:
   mynet:

@@ -41,12 +41,15 @@ pipeline {
                 }
             }
         }
-        // stage('Clean up') {
-        //     steps {
-        //         sh 'docker rm -f go-api'
-        //         sh 'docker rm -f mssql'
-        //         sh 'docker image rm khunball/docker-todo-app:latest'
-        //     }
-        // }
+        stage('Clean up') {
+            steps {
+                // sh 'docker rm -f go-api'
+                // sh 'docker rm -f mssql'
+                // sh 'docker image rm khunball/docker-todo-app:latest'
+                sh 'rm .env'
+                sh 'rm Dockerfile'
+                sh 'rm docker-compose.yml'
+            }
+        }
     }
 }

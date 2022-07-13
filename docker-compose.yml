@@ -12,8 +12,8 @@ services:
     networks:
       - mynet
     ports:
-      - 4200:80
-      - 80:1234
+      - 80:80
+      - 1234:1234
     environment:
       - PASSWORD=${PASSWORD}
       - HOST=${HOST}

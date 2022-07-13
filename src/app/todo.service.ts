@@ -13,7 +13,8 @@ import { Todo } from './todo';
 })
 export class TodoService {
 
-  private todosUrl = 'http://localhost/users';  // URL to web api
+  // private todosUrl = 'http://localhost/users';  // URL to web api
+  private todosUrl = `http://${window.location.hostname}:1234/users`
   // private todosUrl = 'http://localhost:5678/users';  // URL to web api
 
   httpOptions = {
